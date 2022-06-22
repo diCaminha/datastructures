@@ -10,5 +10,13 @@ class Demo{
       list.addLast(29);
       list.addLast(12);
       System.out.println(list);
+
+      Stack<Integer> stack = new Stack<Integer>();
+      stack.push(3);
+      stack.push(13);
+      stack.push(5);
+      System.out.println(stack);
+      stack.pop();
+      System.out.println(stack);
    }
 }

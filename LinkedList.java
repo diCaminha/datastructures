@@ -1,29 +1,13 @@
-public class LinkedList <T> implements Iterable <T> {
-    private int size = 0;
-    private Node <T> head = null;
-    private Node <T> tail = null;
+public class LinkedList<T> implements Iterable<T> {
+    protected int size = 0;
+    protected Node<T> head = null;
+    protected Node<T> tail = null;
 
-    private class Node <T> {
-        T data;
-        Node <T> prev, next;
-
-        public Node(T data, Node <T> prev, Node<T> next) {
-            this.data = data;
-            this.next = next;
-            this.prev = prev;
-        }
-
-        @Override
-        public String toString() {
-            return data.toString();
-        }
-    }
-
-    // Empty the linked list 
+    // Empty the linked list
     public void clear() {
-        Node <T> curr = head;
+        Node<T> curr = head;
         while (curr != null) {
-            Node <T> next = curr.next;
+            Node<T> next = curr.next;
             curr.prev = null;
             curr.next = null;
             curr.data = null;
@@ -37,12 +21,11 @@ public class LinkedList <T> implements Iterable <T> {
         return size;
     }
 
-
     public void addLast(T element) {
         if (size == 0) {
-            head = new Node(element, null, null);
+            head = new Node<T>(element, null, null);
         } else {
-            Node <T> newElement = new Node(element, this.tail, null);
+            Node<T> newElement = new Node<T>(element, this.tail, null);
             tail.next = newElement;
             tail = tail.next;
         }
@@ -52,11 +35,10 @@ public class LinkedList <T> implements Iterable <T> {
     // Add element to the head of the list - O(1)
     public void addFirst(T element) {
         if (size == 0) {
-            head = new Node(element, null, null);
+            head = new Node<T>(element, null, null);
             tail = head;
-        }
-        else {
-            Node <T> newElement = new Node(element, null, this.head);
+        } else {
+            Node<T> newElement = new Node<T>(element, null, this.head);
             head.prev = newElement;
             head = head.prev;
         }
@@ -68,7 +50,7 @@ public class LinkedList <T> implements Iterable <T> {
         StringBuilder sb = new StringBuilder();
         sb.append("[ ");
 
-        Node <T> curr = head;
+        Node<T> curr = head;
 
         while (curr != null) {
             sb.append(curr.data + ", ");
@@ -77,18 +59,20 @@ public class LinkedList <T> implements Iterable <T> {
 
         sb.append(" ]");
         return sb.toString();
-    }   
+    }
 
     @Override
-    public java.util.Iterator <T> iterator () {
-        return new java.util.Iterator <T> () {
-            private Node <T> curr = head;
+    public java.util.Iterator<T> iterator() {
+        return new java.util.Iterator<T>() {
+            private Node<T> curr = head;
 
-            @Override public boolean hasNext() {
+            @Override
+            public boolean hasNext() {
                 return curr != null;
             }
 
-            @Override public T next() {
+            @Override
+            public T next() {
                 T data = curr.data;
                 curr = curr.next;
                 return data;
