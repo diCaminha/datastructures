@@ -37,10 +37,23 @@ public class LinkedList <T> implements Iterable <T> {
         return size;
     }
 
+
+    public void addLast(T element) {
+        if (size == 0) {
+            head = new Node(element, null, null);
+        } else {
+            Node <T> newElement = new Node(element, this.tail, null);
+            tail.next = newElement;
+            tail = tail.next;
+        }
+        size++;
+    }
+
     // Add element to the head of the list - O(1)
     public void addFirst(T element) {
         if (size == 0) {
             head = new Node(element, null, null);
+            tail = head;
         }
         else {
             Node <T> newElement = new Node(element, null, this.head);

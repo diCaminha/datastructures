@@ -6,5 +6,9 @@ class Demo{
       list.addFirst(1);
       list.addFirst(5);
       System.out.println(list);
+
+      list.addLast(29);
+      list.addLast(12);
+      System.out.println(list);
    }
 }
